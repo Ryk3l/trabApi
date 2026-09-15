@@ -15,19 +15,19 @@ public class ClienteController {
 
     private final ClienteService clienteService;
 
-    // Endpoint: http://localhost:8085/clientes/listar-clientes
+    // http://localhost:8085/clientes/listar-clientes
     @GetMapping("/listar-clientes")
     public List<Cliente> listar() {
         return clienteService.listarClientes();
     }
 
-    // Endpoint: http://localhost:8085/clientes/salvar-cliente
+    // http://localhost:8085/clientes/salvar-cliente
     @PostMapping("/salvar-cliente")
     public Cliente criar(@RequestBody Cliente cliente) {
         return clienteService.salvarCliente(cliente);
     }
 
-    // Endpoint: http://localhost:8085/clientes/buscar-cliente/{id}
+    // http://localhost:8085/clientes/buscar-cliente/
     @GetMapping("/buscar-cliente/{id}")
     public ResponseEntity<Cliente> buscar(@PathVariable Long id) {
         try {
@@ -37,7 +37,7 @@ public class ClienteController {
         }
     }
 
-    // Endpoint: http://localhost:8085/clientes/atualizar-cliente/{id}
+    // http://localhost:8085/clientes/atualizar-cliente/id
     @PutMapping("/atualizar-cliente/{id}")
     public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
         try {
@@ -47,10 +47,24 @@ public class ClienteController {
         }
     }
 
-    // Endpoint: http://localhost:8085/clientes/deletar-cliente/{id}
+    // http://localhost:8085/clientes/deletar-cliente/3
     @DeleteMapping("/deletar-cliente/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         clienteService.deletarClientePorId(id);
         return ResponseEntity.noContent().build();
     }
 }
+
+//estrutura para envio:
+
+//        {
+//        "nome": "pedro Ryquerlme",
+//        "tipoPessoa":"PF",
+//        "cpfCnpj": "4214251",
+//        "telefone": "5123324",
+//        "email": "dwadawsadwddwa",
+//        "logradouro": "dwaasdawddwadawdaw",
+//        "numero": "25125",
+//        "bairro": "dqwadqdwawd",
+//        "cep": "dawddawwdaad"
+//        }
